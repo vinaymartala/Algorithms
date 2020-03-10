@@ -1,1 +1,56 @@
+Given an array of 0's and 1's , find the length of  longest sub-array which has equal number of 0's and 1's. (page - 61)
+
+A(n) :  0 1 1 1   0 1 0 1  ans = (4)
+
+1) Brute force : geneate all sub-arrays and check for equal number of 0's and 1's
+    
+    n*n*n,1
+    
+    sub-arrays = n*n, check = n
+    
+2)  We are optimizing the check by using carry - forward technique(window)
+   
+   n*n,1
+==============================
+genarate cumulative sum array after replacing 0's with -1
+
+ cumulative =  -1 0 1 2 1 2 1 2
+ 
+3)use two pointer - n*n + n(cumulative), n(cumulative can be avoided if updated on input array)
+
+4)create index array - n
+  merge sort(cumulative array alog with index) - nlogn
+  get max length  = (7-3) or (6-2) - n
+
+    -1 0 1 1 1  2 2 2     
+     0 1 2 4 6 3 5 7
+     
+     n +  n+ nlogn+ n , n + n
+     
+ 5)in the above method after sorting we get the first index and last index of each  unique value of sum and get differnec
+   use two maps for storing first index and last index.
+   
+   n (cumulative) + n (maps) + n (iterating map), n+n(maps)
+   
+ 6)use single map and update max immediately without storing last index  
+   n(cumulative) +  n(iterating and max), n
+   
+ 7) combine prefix sum and map creation  
+      n, n
+      
+ 8) can use count array without map(with range from -n to n)
+      n, 2n+1
+      
+ extension - find number of sub arrays
+ https://www.hackerrank.com/contests/smart-interviews/challenges/si-number-of-valid-subarrays
+ 
+ solutions:
+ 
+ https://www.geeksforgeeks.org/count-subarrays-equal-number-1s-0s/
+ https://leetcode.com/articles/contiguous-array/
+
+      
+
+ 
+
 
