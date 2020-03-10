@@ -1,0 +1,30 @@
+p) find water logged among buildings. page(64)
+
+   A(n) =  1 6 2 4 5 7 9  ans = 7 
+   
+   
+   1) brute force :
+        water logged on any building =  Math.min(lmax - a[i],rmax - a[i]); lmax or rmax = max in left or right sub-array 
+        for a[0]= 0; , a[n-1] = 0;
+        
+        n * n (for each bilding, lmax + rmax time), 1
+        
+   2)if we can pre-compute lmax and rmax we can reduce the complexity to O(n).
+    
+     lmax[0] = a[0],  lmax[i] = Math.max(lmax[i-1], a[i])
+     rmax[n-1] = a[n-1], rmax[i] = Math.max(rmax[i+1], a[i])
+     area (1 to n-2)  +=  Math.min(lmax[i]-a[i],rmax[i]-a[i]);
+      
+      n(lmax) + n(rmax) + n(area) , n(lmax) + n(rmax)
+      
+   3) we observe that computation of lmax and area can be done together, 
+   
+                lmax = Math.max(lmax,a[i]);
+                area += Math.min(lmax-a[i],rmax[i]-a[i]);
+                
+      n(rmax) + n (area + lmax) , n(rmax)
+      
+   problem: 
+   https://www.hackerrank.com/contests/smart-interviews/challenges/si-collecting-water/problem
+      
+    
