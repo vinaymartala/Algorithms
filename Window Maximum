@@ -1,0 +1,9 @@
+Given an array of integers of size N and a window size K. For each continuous window of size K, find the highest element in the window. 
+Output the sum of the highest element of all the windows.
+
+Brute force : 1) find the max in each window and add it to sum, k*(n-k+1)
+
+carry forward : as we need to find max in each window,as window moves forward there is only one element entering or leaving,
+ i
+
+
