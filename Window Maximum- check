@@ -6,6 +6,10 @@ Brute force : 1) find the max in each window and add it to sum, k*(n-k+1)
 2) as we need to find max in each window,as window moves forward there is only one element entering or leaving.
 We need to maintain order as well as count (as there may be duplicates) - ordered Map
  n*(log k + log k +log k), k (map) - have to check for remove  
+ 
+
+3)deque pending
+
 
 
 
