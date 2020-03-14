@@ -1,0 +1,29 @@
+Given 2 strings A(m) and B(n), find the smallest substring of B having all the characters of A, in any order.
+
+1) brute force generate all substrings, for each substring take it as new string and search for all charcaters in A.
+
+       n*n ( n + nm), n
+       n* n = substring generation
+       n = copy array - as there may be duplicates in String B we have to mark as 0,
+       so that it is not counted again(ex: B = aab)
+       nm = search  substring with  String A
+       
+       
+ 2)  we have to optimize ,
+     nm = can be reduced as the string contains charcters froom [a-z] ,
+     if we can maintain count array and compare for the count
+         such that all chcraters in A are in B Count array
+         
+       m + n*n(n+26), 26 + 26   | m = count array of A , n = count array populating subString , 26 for compare count arrays.
+       
+ 3) carry forward count for sub array ( n  -> 1)
+      m + n*n(1+26), 26+26
+      
+ 4)if we find a valid substring , from 0 to say some index x , 
+ there might be a possibility that its also a valid from 1 to x .
+ 
+ From p1=0 find some p2. where you can find  vslid substring containing all characters,
+ From there move p1 and p2 rest of the array accordingly.
+ 
+ (n+n)* 26 + m , 26+26 | n->p1 , n ->p2
+ 
