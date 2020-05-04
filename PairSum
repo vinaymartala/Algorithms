@@ -1,0 +1,18 @@
+Find pair with given sum in the array
+http://www.techiedelight.com/find-pair-with-given-sum-array/
+
+1)Native approach
+compare each element with other.
+ o(n*n),o(1)
+ 
+2) sort elements,use two pointer technique
+  o(nlogn + n)   ,   O(n)
+  sorting + 2 ptr    sorting
+  
+3) add all elements to hashMap,(not hash set for repeating numbers), in a for loop iterate and check for k-a[i]  
+  o(n + n)             ,  o(n)
+  hash map + searching    hashmap
+  
+4) instead of pre-populating hashmap, do it on fly map<a[i],i>
+o(n), o(n)
+  
