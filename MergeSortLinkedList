@@ -1,0 +1,88 @@
+/**
+ * Definition for singly-linked list.
+ * class ListNode {
+ *     public int val;
+ *     public ListNode next;
+ *     ListNode(int x) { val = x; next = null; }
+ * }
+ */
+ 
+
+public class Solution {
+    public ListNode sortList(ListNode A) {
+    if(A == null || A.next == null) return A;
+      return mergeSort(A);
+    }
+    
+   /* Idea: find the mid and make mid.next = null, it gives us two ListNodes.*/
+    public static ListNode mergeSort(ListNode root){
+        if(root == null || root.next == null) return root;
+        
+        ListNode mid = findMid(root,true);
+        
+        ListNode h2 = mid.next;
+        mid.next = null;
+        return merge(mergeSort(root),mergeSort(h2));
+         
+    }
+    
+    public static ListNode merge(ListNode h1, ListNode h2){
+        if(h1 == null) return h2;
+        if(h2 == null) return h1;
+        
+        ListNode head = null;
+        ListNode p = null;
+        if(h1.val < h2.val){
+            head = h1;
+            p = h1;
+            h1= h1.next;
+        }else{
+            head = h2;
+            p= h2;
+            h2 = h2.next;
+        }
+        
+        while(h1 != null && h2 != null){
+            if(h1.val<h2.val){
+                p.next = h1;
+                h1 = h1.next;
+            }else{
+                p.next = h2;
+                h2 = h2.next;
+            }
+            p = p.next;
+        }
+        if(h1 != null){
+            p.next = h1;
+        }else{
+            p.next = h2;
+        }
+        
+        return head;
+    }
+    
+    /*
+    if there are two node only , without lower concept findMid will cause infinite loop.
+    */
+    public static ListNode findMid(ListNode root,boolean lower){
+        ListNode slow = root;
+        ListNode fast  = root;
+        ListNode prev = null;
+        while(fast != null && fast.next != null){
+            prev = slow;
+            fast = fast.next.next;
+            slow = slow.next;
+        }
+        if(fast == null){
+            if(lower){
+                 return prev; 
+            }else{
+                return slow;
+            }
+          
+        }
+
+        return slow;
+        
+    }
+}
