@@ -16,7 +16,7 @@ genarate cumulative sum array after replacing 0's with -1
 
  cumulative =  -1 0 1 2 1 2 1 2
  
-3)use two pointer - n*n + n(cumulative), n(cumulative can be avoided if updated on input array)
+3)use two pointer - n*n(for each find where it occurs at last) + n(cumulative), n(cumulative can be avoided if updated on input array)
 
 4)create index array - n
   merge sort(cumulative array alog with index) - nlogn
@@ -25,12 +25,12 @@ genarate cumulative sum array after replacing 0's with -1
     -1 0 1 1 1  2 2 2     
      0 1 2 4 6 3 5 7
      
-     n +  n+ nlogn+ n , n + n
+     n(cummulative) +  n(index array) + nlogn(sorting both index and cumulative) + n(get largest length) , n + n
      
- 5)in the above method after sorting we get the first index and last index of each  unique value of sum and get differnec
+ 5)in the above method instead of  sorting, we get the first index and last index of each  unique value of sum and get differnce
    use two maps for storing first index and last index.
    
-   n (cumulative) + n (maps) + n (iterating map), n+n(maps)
+   n (cumulative) + n (maps) + n (iterating map), n+n(maps for stroting first and last)
    
  6)use single map and update max immediately without storing last index  
    n(cumulative) +  n(iterating and max), n
